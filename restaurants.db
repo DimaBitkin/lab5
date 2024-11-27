@@ -1,0 +1,43 @@
+import json
+
+from flask import app
+
+from server import Restaurant
+
+@app.before_first_request
+def populate_data():
+    if not Restaurant.query.first():
+        with open('config.json') as f:
+            config = json.load(f)
+        
+        for restaurant_data in config["restaurants"]:
+            restaurant = Restaurant(
+                name=restaurant_data["name"],
+                location=restaurant_data["location"]
+            )
+            db.session.add(restaurant)
+            db.session.commit()
+
+            for hall_data in restaurant_data["halls"]:
+                hall = Hall(
+                    name=hall_data["name"],
+                    restaurant_id=restaurant.id
+                )
+                db.session.add(hall)
+                db.session.commit()
+
+                for table_data in hall_data["tables"]:
+                    table = Table(
+                        hall_id=hall.id,
+                        is_reserved=table_data["is_reserved"]
+                    )
+                    db.session.add(table)
+
+            for menu_item_data in restaurant_data["menu"]:
+                menu_item = MenuItem(
+                    name=menu_item_data["name"],
+                    price=menu_item_data["price"],
+                    restaurant_id=restaurant.id
+                )
+                db.session.add(menu_item)
+        db.session.commit()

@@ -1,0 +1,80 @@
+{
+    "restaurants": [
+        {
+            "name": "Restaurant 1",
+            "location": "Moscow",
+            "halls": [
+                {
+                    "name": "Hall 1",
+                    "tables": [
+                        {
+                            "is_reserved": false
+                        },
+                        {
+                            "is_reserved": false
+                        },
+                        {
+                            "is_reserved": true
+                        }
+                    ]
+                },
+                {
+                    "name": "Hall 2",
+                    "tables": [
+                        {
+                            "is_reserved": false
+                        },
+                        {
+                            "is_reserved": false
+                        }
+                    ]
+                }
+            ],
+            "menu": [
+                {
+                    "name": "Pizza",
+                    "price": 500
+                },
+                {
+                    "name": "Burger",
+                    "price": 300
+                },
+                {
+                    "name": "Salad",
+                    "price": 200
+                }
+            ]
+        },
+        {
+            "name": "Restaurant 2",
+            "location": "Saint Petersburg",
+            "halls": [
+                {
+                    "name": "Hall 1",
+                    "tables": [
+                        {
+                            "is_reserved": false
+                        },
+                        {
+                            "is_reserved": false
+                        }
+                    ]
+                }
+            ],
+            "menu": [
+                {
+                    "name": "Sushi",
+                    "price": 700
+                },
+                {
+                    "name": "Rolls",
+                    "price": 500
+                },
+                {
+                    "name": "Soup",
+                    "price": 300
+                }
+            ]
+        }
+    ]
+}

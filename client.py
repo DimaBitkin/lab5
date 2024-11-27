@@ -4,32 +4,37 @@ BASE_URL = "http://127.0.0.1:5000"
 
 def list_restaurants():
     response = requests.get(f"{BASE_URL}/restaurants")
-    response.encoding = 'utf-8'  # Set encoding to UTF-8
+    response.encoding = 'utf-8'
     restaurants = response.json()
     print("\nList of restaurants:")
     for r in restaurants:
-        print(f"ID: {r['id']}, Name: {r['name']}, Location: {r['location']}")
+        print(f"ID: {r['id']}, Name: {r['name']}, Location: {r['location']}, Revenue: {r['revenue']}")
     return restaurants
 
 def view_restaurant(restaurant_id):
-    response_halls = requests.get(f"{BASE_URL}/restaurant/{restaurant_id}")
-    response_halls.encoding = 'utf-8'
-    response_menu = requests.get(f"{BASE_URL}/menu/{restaurant_id}")
-    response_menu.encoding = 'utf-8'
+    response = requests.get(f"{BASE_URL}/restaurant/{restaurant_id}")
+    response.encoding = 'utf-8'
+    restaurant = response.json()
 
-    halls = response_halls.json()
-    menu = response_menu.json()
+    print(f"\nRestaurant: {restaurant['restaurant']['name']}")
+    print(f"Location: {restaurant['restaurant']['location']}")
+    print(f"Revenue: {restaurant['restaurant']['revenue']}")
 
-    print("\nHalls and tables:")
-    for hall in halls:
-        print(f"Hall: {hall['hall_name']}")
-        for table in hall['tables']:
-            status = "Reserved" if table["is_reserved"] else "Available"
-            print(f"  Table ID: {table['id']} - {status}")
+    print("\nHalls:")
+    for hall in restaurant["halls"]:
+        print(f"  {hall['name']} (Capacity: {hall['capacity']})")
 
     print("\nMenu:")
-    for item in menu:
-        print(f"{item['name']} - ${item['price']}")
+    for item in restaurant["menu"]:
+        print(f"  {item['name']} - ${item['price']}")
+
+    print("\nEmployees:")
+    for employee in restaurant["employees"]:
+        print(f"  {employee['name']} ({employee['role']}, Performance: {employee['performance']})")
+
+    print("\nWarehouse:")
+    for product in restaurant["warehouses"]:
+        print(f"  {product['product_name']} - {product['quantity']} units")
 
 def reserve_table():
     table_id = int(input("\nEnter Table ID to reserve: "))

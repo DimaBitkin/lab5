@@ -17,17 +17,6 @@
                             "is_reserved": true
                         }
                     ]
-                },
-                {
-                    "name": "Hall 2",
-                    "tables": [
-                        {
-                            "is_reserved": false
-                        },
-                        {
-                            "is_reserved": false
-                        }
-                    ]
                 }
             ],
             "menu": [
@@ -43,36 +32,27 @@
                     "name": "Salad",
                     "price": 200
                 }
-            ]
-        },
-        {
-            "name": "Restaurant 2",
-            "location": "Saint Petersburg",
-            "halls": [
+            ],
+            "employees": [
                 {
-                    "name": "Hall 1",
-                    "tables": [
-                        {
-                            "is_reserved": false
-                        },
-                        {
-                            "is_reserved": false
-                        }
-                    ]
+                    "name": "John Doe",
+                    "role": "chef",
+                    "performance": 1.5
+                },
+                {
+                    "name": "Jane Smith",
+                    "role": "waiter",
+                    "performance": 1.2
                 }
             ],
-            "menu": [
+            "warehouses": [
                 {
-                    "name": "Sushi",
-                    "price": 700
+                    "product_name": "Cheese",
+                    "quantity": 50
                 },
                 {
-                    "name": "Rolls",
-                    "price": 500
-                },
-                {
-                    "name": "Soup",
-                    "price": 300
+                    "product_name": "Tomato",
+                    "quantity": 30
                 }
             ]
         }

@@ -1,0 +1,16 @@
+{
+    "employees": [
+        {
+            "id": 1,
+            "name": "Chef John",
+            "role": "chef",
+            "performance": 1.2
+        },
+        {
+            "id": 2,
+            "name": "Waiter Anna",
+            "role": "waiter",
+            "performance": 1.0
+        }
+    ]
+}

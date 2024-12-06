@@ -1,0 +1,76 @@
+{
+    "halls": [
+        {
+            "id": 1,
+            "name": "Main Hall",
+            "tables": [
+                {
+                    "id": 1,
+                    "status": "free"
+                },
+                {
+                    "id": 2,
+                    "status": "reserved"
+                },
+                {
+                    "id": 3,
+                    "status": "free"
+                },
+                {
+                    "id": 4,
+                    "status": "free"
+                },
+                {
+                    "id": 5,
+                    "status": "free"
+                },
+                {
+                    "id": 6,
+                    "status": "free"
+                },
+                {
+                    "id": 7,
+                    "status": "free"
+                },
+                {
+                    "id": 8,
+                    "status": "free"
+                },
+                {
+                    "id": 9,
+                    "status": "free"
+                },
+                {
+                    "id": 10,
+                    "status": "free"
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "name": "VIP Hall",
+            "tables": [
+                {
+                    "id": 1,
+                    "status": "free"
+                },
+                {
+                    "id": 2,
+                    "status": "free"
+                },
+                {
+                    "id": 3,
+                    "status": "free"
+                },
+                {
+                    "id": 4,
+                    "status": "free"
+                },
+                {
+                    "id": 5,
+                    "status": "free"
+                }
+            ]
+        }
+    ]
+}

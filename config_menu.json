@@ -1,0 +1,128 @@
+{
+    "ingredients": [
+        {
+            "id": 1,
+            "name": "flour",
+            "unit": "kg"
+        },
+        {
+            "id": 2,
+            "name": "eggs",
+            "unit": "pcs"
+        },
+        {
+            "id": 3,
+            "name": "meat_patties",
+            "unit": "pcs"
+        },
+        {
+            "id": 4,
+            "name": "cheese",
+            "unit": "kg"
+        },
+        {
+            "id": 5,
+            "name": "sausages",
+            "unit": "pcs"
+        },
+        {
+            "id": 6,
+            "name": "mayo",
+            "unit": "liters"
+        }
+    ],
+    "recipes": [
+        {
+            "id": 1,
+            "name": "Burger",
+            "ingredients": [
+                {
+                    "ingredient_id": 1,
+                    "amount": 0.1
+                },
+                {
+                    "ingredient_id": 2,
+                    "amount": 1
+                },
+                {
+                    "ingredient_id": 3,
+                    "amount": 1
+                },
+                {
+                    "ingredient_id": 4,
+                    "amount": 0.05
+                },
+                {
+                    "ingredient_id": 5,
+                    "amount": 1
+                },
+                {
+                    "ingredient_id": 6,
+                    "amount": 0.05
+                }
+            ],
+            "complexity": 6
+        },
+        {
+            "id": 2,
+            "name": "Fries",
+            "ingredients": [
+                {
+                    "ingredient_id": 1,
+                    "amount": 0.2
+                },
+                {
+                    "ingredient_id": 2,
+                    "amount": 1
+                }
+            ],
+            "complexity": 2
+        }
+    ],
+    "warehouses": [
+        {
+            "id": 1,
+            "name": "Main Warehouse",
+            "ingredients": [
+                {
+                    "ingredient_id": 1,
+                    "amount": 100
+                },
+                {
+                    "ingredient_id": 2,
+                    "amount": 200
+                },
+                {
+                    "ingredient_id": 3,
+                    "amount": 50
+                },
+                {
+                    "ingredient_id": 4,
+                    "amount": 30
+                },
+                {
+                    "ingredient_id": 5,
+                    "amount": 40
+                },
+                {
+                    "ingredient_id": 6,
+                    "amount": 10
+                }
+            ]
+        }
+    ],
+    "employees": [
+        {
+            "id": 1,
+            "name": "Chef John",
+            "role": "chef",
+            "performance": 1.2
+        },
+        {
+            "id": 2,
+            "name": "Waiter Anna",
+            "role": "waiter",
+            "performance": 1.0
+        }
+    ]
+}

@@ -110,6 +110,7 @@
             "id": 1,
             "name": "Burger",
             "complexity": 6,
+            "price": 15.0,
             "ingredients": [
                 {
                     "ingredient_id": 1,
@@ -141,6 +142,7 @@
             "id": 2,
             "name": "Fries",
             "complexity": 2,
+            "price": 5.0,
             "ingredients": [
                 {
                     "ingredient_id": 1,
@@ -191,6 +193,12 @@
             "name": "Chef John",
             "role": "chef",
             "performance": 1.2
+        },
+        {
+            "id": 3,
+            "name": "Chef Dick",
+            "role": "chef",
+            "performance": 2.0
         },
         {
             "id": 2,

@@ -28,11 +28,12 @@ class Ingredient:
 
 # Класс для представления рецепта
 class Recipe:
-    def __init__(self, id, name, ingredients, complexity):
+    def __init__(self, id, name, ingredients, complexity, prise):
         self.id = id
         self.name = name
         self.ingredients = ingredients  # Список (ingredient_id, amount)
         self.complexity = complexity
+        self.prise = prise
 
 # Класс для представления склада
 class Warehouse:
@@ -135,7 +136,9 @@ class RestaurantDatabase:
                 recipe_data["id"],
                 recipe_data["name"],
                 ingredients,
-                recipe_data["complexity"]
+                recipe_data["complexity"],
+                recipe_data["price"]
+                
             )
             self.recipes.append(recipe)
 
@@ -182,7 +185,16 @@ class RestaurantDatabase:
                 return True
         return False
 
+    def release_table(self, hall_id, table_id):
+        hall = self.get_hall(hall_id)
+        if hall:
+            table = hall.get_table(table_id)
+            if table and table.status == "reserved":
+                table.set_status("free")
+                return True
+        return False
     
+
     # Получить ингредиент по ID
     def get_ingredient_by_id(self, ingredient_id):
         for ingredient in self.ingredients:
@@ -239,11 +251,15 @@ class RestaurantDatabase:
         base_time = recipe.complexity * 10  # 10 минут на единицу сложности
         time_to_complete = base_time / chef.performance
 
+        # Вычисляем стоимость заказа
+        total_cost = recipe.price * quantity
+
         # Создаём заказ
         order = {
             "recipe_name": recipe_name,
             "quantity": quantity,
-            "time_to_complete": time_to_complete
+            "time_to_complete": time_to_complete,
+            "total_cost": total_cost
         }
 
         # Добавляем заказ в стек повара
@@ -251,7 +267,8 @@ class RestaurantDatabase:
 
         # Списываем ингредиенты
         self.deduct_ingredients(recipe_name, quantity)
-        return {"status": "success", "time_to_complete": time_to_complete, "chef_id": chef.id}
+        return {"status": "success", "time_to_complete": time_to_complete, "chef_id": chef.id, "total_cost": total_cost}
+
 
     # Списать ингредиенты с запасов
     def deduct_ingredients(self, recipe_name, quantity):
@@ -268,7 +285,10 @@ class RestaurantDatabase:
                                 new_amount = warehouse_amount - total_needed
                                 warehouse.ingredients[index] = (warehouse_ingredient_id, new_amount)
         return True
-
+    # Расчет выручки
+    def get_total_revenue(self):
+        return sum(recipe.price * order["quantity"] for recipe in self.recipes for order in recipe.orders)
+    
 
     #Получить информацию о загруженности сотрудников.
     def get_employee_loads(self):
@@ -318,6 +338,7 @@ class RestaurantDatabase:
                     "id": recipe.id,
                     "name": recipe.name,
                     "complexity": recipe.complexity,
+                    "price": recipe.price,
                     "ingredients": [
                         {"ingredient_id": ing_id, "amount": amount}
                         for ing_id, amount in recipe.ingredients
